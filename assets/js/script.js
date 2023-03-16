@@ -6,6 +6,10 @@ const hours = [9, 10, 11, 12, 13, 14, 15, 16, 17]
 // in the html.
 $(function () {
 	// Iterate through each hour
+	const timeBlockListEl = $('#time-block-list')
+	for (let i = 0; i < hours.length; i++) {
+		timeBlockListEl.append(createTimeBlock(hours[i]))
+	}
 	// TODO: Add a listener for click events on the save button. This code should
 	// use the id in the containing time-block as a key to save the user input in
 	// local storage. HINT: What does `this` reference in the click listener
@@ -55,7 +59,7 @@ function createTimeBlock(hour) {
 		innerDiv.text(`${hour}AM`)
 	}
 
-	const textArea = $('<textarea>').addClass('col-8 col-md-10 description').rows(3)
+	const textArea = $('<textarea>').addClass('col-8 col-md-10 description').attr('rows', 3)
 
 	const btn = $('<button>').addClass('btn saveBtn col-2 col-md-1').attr('aria-label', 'save')
 
@@ -66,4 +70,5 @@ function createTimeBlock(hour) {
 	outerDiv.append(innerDiv)
 	outerDiv.append(textArea)
 	outerDiv.append(btn)
+	return outerDiv
 }
