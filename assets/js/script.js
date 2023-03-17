@@ -54,7 +54,7 @@ function createTimeBlock(hour) {
 	btn.append(icon)
 	// Add event listener to store event
 	btn.click(function () {
-		if (textArea.val().trim()) setStorageByHour(hour, textArea.val())
+		setStorageByHour(hour, textArea.val())
 	})
 
 	outerDiv.append(innerDiv)
