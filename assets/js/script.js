@@ -38,7 +38,9 @@ function createTimeBlock(hour) {
 
 	// Create inner elements
 	const innerDiv = $('<div>').addClass('col-2 col-md-1 hour text-center py-3')
-	if (hour > 12) {
+	if (hour === 12) {
+		innerDiv.text('12PM')
+	} else if (hour > 12) {
 		innerDiv.text(`${hour - 12}PM`)
 	} else {
 		innerDiv.text(`${hour}AM`)
