@@ -60,15 +60,30 @@ function createTimeBlock(hour) {
 	}
 
 	const textArea = $('<textarea>').addClass('col-8 col-md-10 description').attr('rows', 3)
+	textArea.text(getStorageByHour(hour))
 
 	const btn = $('<button>').addClass('btn saveBtn col-2 col-md-1').attr('aria-label', 'save')
 
 	const icon = $('<i>').addClass('fas fa-save').attr('aria-hidden', 'true')
 
 	btn.append(icon)
+	// Add event listener to store event
+	btn.click(function () {
+		if (textArea.val().trim()) setStorageByHour(hour, textArea.val())
+	})
 
 	outerDiv.append(innerDiv)
 	outerDiv.append(textArea)
 	outerDiv.append(btn)
 	return outerDiv
+}
+
+function getStorageByHour(hour) {
+	const item = localStorage.getItem(hour)
+	if (item) return item
+	else return ''
+}
+
+function setStorageByHour(hour, item) {
+	localStorage.setItem(hour, item)
 }
